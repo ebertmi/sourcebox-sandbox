@@ -1,0 +1,29 @@
+{
+  "name": "@sourcebox/sandbox",
+  "version": "0.0.1",
+  "author": "Johannes Henninger <johannes@henninger.io>",
+  "license": "GPL-3.0+",
+  "private": true,
+  "main": "lib/sourcebox.js",
+  "dependencies": {
+    "@sourcebox/lxc": "file:../lxc",
+    "bluebird": "^2.10.2",
+    "bluebird-retry": "^0.5.1",
+    "chalk": "^1.1.1",
+    "csv-parse": "^1.0.0",
+    "fs-extra": "^0.24.0",
+    "inquirer": "^0.10.1",
+    "lodash": "^3.10.1",
+    "request": "^2.64.0",
+    "semver": "^5.0.3",
+    "shortid": "^2.2.2",
+    "text-table": "^0.2.0",
+    "yargs": "^3.26.0"
+  },
+  "scripts": {
+    "install": "make"
+  },
+  "bin": {
+    "sourcebox": "./bin/sourcebox.js"
+  }
+}
