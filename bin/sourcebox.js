@@ -45,6 +45,7 @@ var argv = yargs
       .example('$0 create -d debian -r jessie -l 2GB /bar',
                'Create a Debian Jessie sourcebox in \'/bar\' using a 2 GB loop mount')
 
+      .string('_')
       .strict()
       .showHelpOnFail(false, seeHelp)
       .argv;
@@ -86,6 +87,7 @@ var argv = yargs
                 'down again. If you have several commands to run, its much better' +
                 'to pass them to a single instance of bash inside the container. See ' +
                 'examples.')
+      .string('_')
       .strict()
       .showHelpOnFail(false, seeHelp)
       .argv;
@@ -105,6 +107,7 @@ var argv = yargs
   .alias('V', 'version')
 
   .epilogue('To get help on a command, use \'$0 --help <command>\'.')
+  .string('_')
   .strict()
   .showHelpOnFail(false, seeHelp)
   .argv;
@@ -268,7 +271,7 @@ function manage() {
     progress.update('Starting sourcebox');
 
     return Sourcebox.using(sourcebox.manage(), function (box) {
-      progress.update('Attaching to container');
+      progress.update('Attaching to sourcebox');
 
       var child = box.attach(command, argv._, {
         term: term && {
