@@ -135,20 +135,22 @@ if (!fn) {
 }
 
 // only require dependencies when a known command is specified to speed up the program
+var readline = require('readline');
+var constants = require('constants');
+
 var Promise = require('bluebird');
 var _ = require('lodash');
 var chalk = require('chalk');
 var csvparse = Promise.promisify(require('csv-parse'));
 var inquirer = require('inquirer');
 var lxc = require('@sourcebox/lxc');
-var readline = require('readline');
 var request = Promise.promisify(require('request'));
 var semver = require('semver');
 var table = require('text-table');
 
 var Sourcebox = require('..');
 var sbutil = require('../lib/util');
-var constants = require('../lib/constants');
+var sbconstants = require('../lib/constants');
 
 
 function Progress() {
@@ -303,7 +305,7 @@ function manage() {
 
       return sbutil.processPromise(child)
         .catch(sbutil.ProcessError, function (err) {
-          return err.code || 1;
+          return err.code || constants[err.signal] + 128 || 1;
         })
         .catch(_.matches({code: 'ENOENT'}),
                sbutil.rethrow('Command not found: %s', command))
@@ -444,7 +446,7 @@ function interactive() {
         }, {
           name: 'loopsize',
           message: util.format('Enter the size of the loop mount (at least %s):',
-                               constants.MIN_LOOP_SIZE),
+                               sbconstants.MIN_LOOP_SIZE),
           type: 'input',
           when: function (answers) {
             return answers.createloop;
@@ -452,10 +454,10 @@ function interactive() {
           default: '1GB',
           validate: function (input) {
             try {
-              var min = sbutil.toBytes(constants.MIN_LOOP_SIZE);
+              var min = sbutil.toBytes(sbconstants.MIN_LOOP_SIZE);
               if (sbutil.toBytes(input) < min) {
                 return util.format('Loop file must be at least %s',
-                                   constants.MIN_LOOP_SIZE);
+                                   sbconstants.MIN_LOOP_SIZE);
               } else {
                 return true;
               }
