@@ -5,6 +5,9 @@
   "license": "GPL-3.0+",
   "private": true,
   "main": "lib/sourcebox.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "dependencies": {
     "@sourcebox/lxc": "file:../lxc",
     "bluebird": "^2.10.2",
