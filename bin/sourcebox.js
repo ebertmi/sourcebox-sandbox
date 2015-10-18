@@ -137,6 +137,7 @@ if (!fn) {
 // only require dependencies when a known command is specified to speed up the program
 var readline = require('readline');
 var constants = require('constants');
+var pathModule = require('path');
 
 var Promise = require('bluebird');
 var _ = require('lodash');
@@ -250,12 +251,11 @@ function create() {
     })
     .finally(progress.stop.bind(progress))
     .then(function () {
-      console.log('Created new sourcebox in \'%s\'', path);
+      console.log('Created new sourcebox in \'%s\'', pathModule.resolve(path));
       process.exit(0);
     })
     .catch(function (err) {
       console.error('Failed to create sourcebox:', err.message);
-      console.error(err.stack); // FIXME delete this
       process.exit(1);
     });
 }
