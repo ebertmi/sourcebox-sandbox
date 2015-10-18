@@ -268,7 +268,6 @@ function manage() {
 
   var sourcebox = new Sourcebox(path);
 
-
   sourcebox.init().then(function () {
     progress.update('Starting sourcebox');
 
@@ -331,7 +330,6 @@ function rootCheck() {
     process.exit(1);
   }
 }
-
 
 function getImageList() {
   // hardcoded for now. very ugly, but there is no easy way to get this from lxc
@@ -470,4 +468,3 @@ function interactive() {
     })
     .then(inquirerPromise);
 }
-
