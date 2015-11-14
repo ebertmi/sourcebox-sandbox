@@ -8,11 +8,11 @@ var yargs = require('yargs');
 var seeHelp =  'See \'--help\' for usage info.';
 
 var argv = yargs
-  .usage('Usage: $0 <command> [options] [<args>...]')
+  .usage('Usage: sourcebox <command> [options] [<args>...]')
 
   .command('create', 'Create a new sourcebox', function (yargs) {
     argv = yargs
-      .usage('Usage: $0 create [options] <path>')
+      .usage('Usage: sourcebox create [options] <path>')
       .demand(2, 2, 'Insufficient or trailing arguments.')
 
       .describe('interactive', 'Interactively create a new sourcebox ' +
@@ -40,9 +40,9 @@ var argv = yargs
 
       .help('help').alias('h', 'help')
 
-      .example('$0 create --interactive ~/foo',
+      .example('sourcebox create --interactive ~/foo',
                'Interactively create a sourcebox instance in \'~/foo\'')
-      .example('$0 create -d debian -r jessie -l 2GB /bar',
+      .example('sourcebox create -d debian -r jessie -l 2GB /bar',
                'Create a Debian Jessie sourcebox in \'/bar\' using a 2 GB loop mount')
 
       .string('_')
@@ -53,7 +53,7 @@ var argv = yargs
 
   .command('list', 'Print the list of available images', function (yargs) {
     argv = yargs
-      .usage('Usage: $0 list [options]')
+      .usage('Usage: sourcebox list [options]')
       .demand(1, 1, 'Trailing arguments.')
 
       .help('help').alias('h', 'help')
@@ -65,32 +65,32 @@ var argv = yargs
 
   .command('manage', 'Manage a previously created sourcebox\n', function (yargs) {
     argv = yargs
-    .usage(['Usage: $0 manage [options] <path> [--] [<cmd> [<args>...]]\n',
+    .usage(['Usage: sourcebox manage [options] <path> [--] [<cmd> [<args>...]]\n',
            'If no command is specified, a bash instance will be executed.'].join('\n'))
-      .demand(2, 'Insufficient arguments.')
+    .demand(2, 'Insufficient arguments.')
 
-      .describe('directory', 'Directory to run the command in')
+    .describe('directory', 'Directory to run the command in')
 
-      .alias('d', 'directory')
-      .default('d', '/root')
-      .requiresArg('directory')
+    .alias('d', 'directory')
+    .default('d', '/root')
+    .requiresArg('directory')
 
-      .help('help').alias('h', 'help')
+    .help('help').alias('h', 'help')
 
-      .example('$0 manage ~/foo -- ls -la /etc',
-               'List all files in the /etc directory of the container \'~/foo\'')
-      .example('$0 manage /bar < script.sh',
-               'Execute \'script.sh\' inside the container \'/bar\'')
+    .example('sourcebox manage ~/foo -- ls -la /etc',
+             'List all files in the /etc directory of the container \'~/foo\'')
+    .example('sourcebox manage /bar < script.sh',
+             'Execute \'script.sh\' inside the container \'/bar\'')
 
-      .epilogue('Note:\nFor each call to \'manage\', the sourcebox instance will have to be' +
-                'initialized, started, the command executed and the sourcebox instance shut ' +
-                'down again. If you have several commands to run, its much better' +
-                'to pass them to a single instance of bash inside the container. See ' +
-                'examples.')
-      .string('_')
-      .strict()
-      .showHelpOnFail(false, seeHelp)
-      .argv;
+    .epilogue('Note:\nFor each call to \'manage\', the sourcebox instance will have to be' +
+              'initialized, started, the command executed and the sourcebox instance shut ' +
+              'down again. If you have several commands to run, its much better' +
+              'to pass them to a single instance of bash inside the container. See ' +
+              'examples.')
+    .string('_')
+    .strict()
+    .showHelpOnFail(false, seeHelp)
+    .argv;
   })
 
   .completion('completion', 'Generate a bash completion script')
@@ -106,7 +106,7 @@ var argv = yargs
 
   .alias('V', 'version')
 
-  .epilogue('To get help on a command, use \'$0 --help <command>\'.')
+  .epilogue('To get help on a command, use \'sourcebox --help <command>\'.')
   .string('_')
   .strict()
   .showHelpOnFail(false, seeHelp)
