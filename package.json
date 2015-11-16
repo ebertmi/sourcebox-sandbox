@@ -1,5 +1,6 @@
 {
   "name": "@sourcebox/sandbox",
+  "description": "Easy-to-use sandbox library and command line utility",
   "version": "0.0.1",
   "author": "Johannes Henninger <johannes@henninger.io>",
   "license": "GPL-3.0+",
@@ -9,7 +10,7 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "@sourcebox/lxc": "file:../lxc",
+    "@sourcebox/lxc": "git+ssh://git@henninger.io:sourcebox/lxc",
     "bluebird": "^2.10.2",
     "bluebird-retry": "^0.5.1",
     "chalk": "^1.1.1",
