@@ -63,7 +63,7 @@ var argv = yargs
       .argv;
   })
 
-  .command('manage', 'Manage a previously created sourcebox\n', function (yargs) {
+  .command('manage', 'Manage a previously created sourcebox', function (yargs) {
     argv = yargs
     .usage(['Usage: sourcebox manage [options] <path> [--] [<cmd> [<args>...]]\n',
            'If no command is specified, a bash instance will be executed.'].join('\n'))
@@ -82,9 +82,9 @@ var argv = yargs
     .example('sourcebox manage /bar < script.sh',
              'Execute \'script.sh\' inside the container \'/bar\'')
 
-    .epilogue('Note:\nFor each call to \'manage\', the sourcebox instance will have to be' +
+    .epilogue('Note:\nFor each call to \'manage\', the sourcebox instance will have to be ' +
               'initialized, started, the command executed and the sourcebox instance shut ' +
-              'down again. If you have several commands to run, its much better' +
+              'down again. If you have several commands to run, its much better ' +
               'to pass them to a single instance of bash inside the container. See ' +
               'examples.')
     .string('_')
