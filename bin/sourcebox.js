@@ -215,6 +215,9 @@ function list() {
       list.unshift(['DISTRO', 'RELEASE', 'ARCH', 'VARIANT']);
       console.log(table(list));
       process.exit(0);
+    })
+    .catch(function (err) {
+      console.error(err.message);
     });
 }
 
