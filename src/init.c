@@ -9,6 +9,10 @@
 #include <unistd.h>
 
 int main() {
+    for (int fd = 0; fd < 3; fd++) {
+        close(fd);
+    }
+
     signal(SIGCHLD, SIG_IGN);
 
     while (1) {
