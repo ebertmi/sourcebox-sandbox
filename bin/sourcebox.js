@@ -98,7 +98,8 @@ var argv = yargs
   .help('help').alias('h', 'help')
 
   .version(function () {
-    return util.format('sourcebox %s\nlxc %s',
+    return util.format('%s\nsourcebox %s\nlxc %s',
+                       require('fs').readFileSync(__dirname + '/logo.txt', 'utf8'),
                        require('../package').version,
                        require('@sourcebox/lxc').version
                       );
