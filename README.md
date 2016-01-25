@@ -19,15 +19,6 @@ CONFIG_MEMCG_SWAP_ENABLED=y
 CONFIG_CFS_BANDWIDTH=y
 ```
 
-### kernel command line
-
-Not sure if this is required.
-
-```
-GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
-update-grub
-```
-
 ## sourcebox command
 
 This package provides the `sourcebox` CLI command. To add it to your path,
