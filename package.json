@@ -5,12 +5,19 @@
   "author": "Johannes Henninger <johannes@henninger.io>",
   "license": "GPL-3.0+",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhenninger/sourcebox-sandbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jhenninger/sourcebox-sandbox/issues"
+  },
   "main": "lib/sourcebox.js",
   "engines": {
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "@sourcebox/lxc": "git+ssh://git@henninger.io:sourcebox/lxc",
+    "@sourcebox/lxc": "jhenninger/sourcebox-lxc",
     "bluebird": "^2.10.2",
     "bluebird-retry": "^0.5.1",
     "chalk": "^1.1.1",
