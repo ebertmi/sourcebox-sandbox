@@ -146,7 +146,7 @@ var chalk = require('chalk');
 var csvparse = Promise.promisify(require('csv-parse'));
 var inquirer = require('inquirer');
 var lxc = require('@sourcebox/lxc');
-var request = Promise.promisify(require('request'));
+var request = Promise.promisify(require('request'), { multiArgs: true });
 var semver = require('semver');
 var table = require('text-table');
 
