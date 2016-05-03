@@ -17,7 +17,7 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "@sourcebox/lxc": "waywaaard/sourcebox-lxc",
+    "@sourcebox/lxc": "git+ssh://git@github.com/waywaaard/sourcebox-lxc.git",
     "bluebird": "^3.3.5",
     "bluebird-retry": "^0.6.1",
     "chalk": "^1.1.3",
