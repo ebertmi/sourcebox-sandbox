@@ -20,7 +20,7 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "@sourcebox/lxc": "github:waywaaard/sourcebox-lxc",
+    "@sourcebox/lxc": "waywaaard/sourcebox-lxc",
     "bluebird": "^3.4.6",
     "bluebird-retry": "^0.8.0",
     "chalk": "^1.1.3",
