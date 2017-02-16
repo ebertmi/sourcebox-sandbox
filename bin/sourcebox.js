@@ -13,7 +13,7 @@ var argv = yargs
   .command('create', 'Create a new sourcebox', function (yargs) {
     argv = yargs
       .usage('Usage: sourcebox create [options] <path>')
-      .demand(2, 2, 'Insufficient or trailing arguments.')
+      /*.demand(2, 2, 'Insufficient or trailing arguments.')*/
 
       .describe('interactive', 'Interactively create a new sourcebox ' +
                 'instance. All other options are ignored')
@@ -54,7 +54,7 @@ var argv = yargs
   .command('list', 'Print the list of available images', function (yargs) {
     argv = yargs
       .usage('Usage: sourcebox list [options]')
-      .demand(1, 1, 'Trailing arguments.')
+      /*.demand(1, 1, 'Trailing arguments.')*/
 
       .help('help').alias('h', 'help')
 
@@ -67,7 +67,7 @@ var argv = yargs
     argv = yargs
     .usage(['Usage: sourcebox manage [options] <path> [--] [<cmd> [<args>...]]\n',
            'If no command is specified, a bash instance will be executed.'].join('\n'))
-    .demand(2, 'Insufficient arguments.')
+    /*.demand(2, 'Insufficient arguments.')*/
 
     .describe('directory', 'Directory to run the command in')
 
