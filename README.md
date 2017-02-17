@@ -19,6 +19,16 @@ CONFIG_MEMCG_SWAP_ENABLED=y
 CONFIG_CFS_BANDWIDTH=y
 ```
 
+## troubleshooting
+If the test server fails with and internal error due to failed to set cgroup memory limit, then you need to follow these steps:
+
+1. Add `cgroup_enable=memory swapaccount=1` to `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`
+2. Run `update-grub`
+3. Reboot the server
+4. Restart/Start server and try again
+
+Also see http://serverfault.com/a/762815
+
 ## sourcebox command
 
 This package provides the `sourcebox` CLI command. To add it to your path,
