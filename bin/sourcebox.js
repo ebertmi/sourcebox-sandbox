@@ -7,6 +7,7 @@ var yargs = require('yargs');
 
 var seeHelp =  'See \'--help\' for usage info.';
 
+// Yargs CLI configuration
 var argv = yargs
   .usage('Usage: sourcebox <command> [options] [<args>...]')
 
@@ -113,22 +114,27 @@ var argv = yargs
   .showHelpOnFail(false, seeHelp)
   .argv;
 
+// Get the command and the path from the args
 var command = argv._.shift();
 var path = argv._.shift();
 
+// If no command has been specified show the help information and exit
 if (!command) {
   yargs.showHelp();
   process.exit(1);
 }
 
+// Command to function mapping
 var commands = {
   list: list,
   manage: manage,
   create: create,
 };
 
+// Get the function to the user specified command
 var fn = commands[command];
 
+// Check if the command is valid
 if (!fn) {
   console.error(util.format('Unknown command: \'%s\'\n', command));
   console.error(seeHelp);
@@ -155,6 +161,9 @@ var sbutil = require('../lib/util');
 var sbconstants = require('../lib/constants');
 
 
+/**
+ * The Progess bar shows a spinner on the terminal output
+ */
 function Progress() {
   this.stream = process.stderr;
   chalk.enabled = this.stream.isTTY;
@@ -206,8 +215,13 @@ Progress.prototype.stop = function () {
 
 var progress = new Progress();
 
+// Launch the given command (e.g. create, manage, list)
 fn();
 
+
+/**
+ * Retrieves a list of images for the various distros.
+ */
 function list() {
   progress.update('Retrieving list of images');
   getImageList()
@@ -222,6 +236,9 @@ function list() {
     });
 }
 
+/**
+ * Creates a new sourcebox container from the specified command line args or using the interactive mode.
+ */
 function create() {
   rootCheck();
 
@@ -264,6 +281,11 @@ function create() {
     });
 }
 
+/**
+ * Allows to manage a previously created sourcebox sandbox instance. You can either pass in a script or command to execute on the sourcebox container
+ * or launch a terminal inside the container for installing/managing the base container.
+ * The sourcebox server needs to be restarted after changes, so that they are applied to the users.
+ */
 function manage() {
   rootCheck();
 
@@ -328,6 +350,9 @@ function manage() {
   });
 }
 
+/**
+ * Check if the executing user has root rights.
+ */
 function rootCheck() {
   if (process.getuid() !== 0) {
     console.error('Sourcebox requires root permissions');
@@ -376,10 +401,14 @@ function capitalize(values) {
   });
 }
 
+/**
+ * Start inquirer (command line questions) with the given set of questions
+ * 
+ * @param {Array} questions
+ * @returns {Promise}
+ */
 function inquirerPromise(questions) {
-  return new Promise(function (resolve) {
-    inquirer.prompt(questions, resolve);
-  });
+  return inquirer.prompt(questions);
 }
 
 function imageListToDistros(list) {
@@ -401,6 +430,11 @@ function imageListToDistros(list) {
   }, {});
 }
 
+/**
+ * Creates the interactive creation mode by retrieving the distro images and then asking for all params.
+ * 
+ * @returns {Promise}
+ */
 function interactive() {
   if (!process.stdout.isTTY) {
     return Promise.reject(new Error('Interactive mode requires a terminal'));
@@ -453,7 +487,7 @@ function interactive() {
           when: function (answers) {
             return answers.createloop;
           },
-          default: '1GB',
+          default: '4GB',
           validate: function (input) {
             try {
               var min = sbutil.toBytes(sbconstants.MIN_LOOP_SIZE);

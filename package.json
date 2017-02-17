@@ -1,7 +1,7 @@
 {
   "name": "@sourcebox/sandbox",
   "description": "Easy-to-use sandbox library and command line utility",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "author": "Johannes Henninger <johannes@henninger.io>",
   "contributors": [
     "Michael Ebert <michael.ebert@gmail.com>"
