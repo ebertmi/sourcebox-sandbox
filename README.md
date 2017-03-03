@@ -1,7 +1,7 @@
 sourcebox/sandbox
 =================
 
-Easy-to-use sandbox library.
+Easy-to-use sandbox library that uses `lxc` and `btrfs` and `cgroups` for enforcing configurable limits. This lib depends on [sourcebox-lxc](https://github.com/waywaaard/sourcebox-lxc) that implements a `lxc` binding for node.
 
 ## linux kernel
 
@@ -13,21 +13,11 @@ required.
 The following kernel config settings have to be changed from the debian
 defaults. These enable cgroup limits for process IDs, CPU time and swap memory.
 
-```
+```bash
 CONFIG_CGROUP_PIDS=y
 CONFIG_MEMCG_SWAP_ENABLED=y
 CONFIG_CFS_BANDWIDTH=y
 ```
-
-## troubleshooting
-If the test server fails with and internal error due to failed to set cgroup memory limit, then you need to follow these steps:
-
-1. Add `cgroup_enable=memory swapaccount=1` to `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`
-2. Run `update-grub`
-3. Reboot the server
-4. Restart/Start server and try again
-
-Also see http://serverfault.com/a/762815
 
 ## sourcebox command
 
@@ -36,7 +26,7 @@ you can either install this package globally using `npm install -g` or run `npm
 link` in the package directory.
 
 
-```
+```bash
 Usage: sourcebox <command> [options] [<args>...]
 
 Commands:
@@ -57,7 +47,7 @@ To get help on a command, use 'sourcebox --help <command>'.
 
 Creates a new sourcebox instance at the specified path, which has to be empty.
 
-```
+```bash
 Usage: sourcebox create [options] <path>
 
 Options:
@@ -95,7 +85,7 @@ Options:
 Manages a previously created sourcebox instance by starting the template
 container with networking enabled and running a command as root.
 
-```
+```bash
 Usage: sourcebox manage [options] <path> [--] [<cmd> [<args>...]]
 
 If no command is specified, a bash instance will be executed.
