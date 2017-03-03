@@ -3,6 +3,9 @@ sourcebox/sandbox
 
 Easy-to-use sandbox library that uses `lxc` and `btrfs` and `cgroups` for enforcing configurable limits. This lib depends on [sourcebox-lxc](https://github.com/waywaaard/sourcebox-lxc) that implements a `lxc` binding for node.
 
+## install
+See `INSTALL.md` for a *"detailed"* installation guide.
+
 ## linux kernel
 
 To be able to use all sandboxing features, a very recent linux kernel (4.3.0+) is
