@@ -55,8 +55,8 @@ sudo -E npm install -g git+ssh://git@github.io:waywaaard/sourcebox-sandbox
 
 There are multiple ways of install the sourcebox-sandbox. The easiest is using npm and installing it using the `-g` flag:
 
-* Try to install using npm with `npm install https://github.com/waywaaard/sourcebox-sandbox -g`
-* Download the `https://github.com/waywaaard/sourcebox-sandbox` as a zip and unzip.
+* Try to install using npm with `npm install https://github.com/ebertmi/sourcebox-sandbox -g`
+* Download the `https://github.com/ebertmi/sourcebox-sandbox` as a zip and unzip.
 * Use `git clone ...` by using either SSH (requires your key) or HTTPS
 
 ### 4. Create a sourcebox sandbox template container
