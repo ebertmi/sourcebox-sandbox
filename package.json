@@ -1,7 +1,7 @@
 {
   "name": "@sourcebox/sandbox",
   "description": "Easy-to-use sandbox library and command line utility",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "author": "Johannes Henninger <johannes@henninger.io>",
   "contributors": [
     "Michael Ebert <michael.ebert@gmail.com>"
@@ -17,19 +17,19 @@
   },
   "main": "lib/sourcebox.js",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=7.6.0"
   },
   "dependencies": {
     "@sourcebox/lxc": "ebertmi/sourcebox-lxc",
-    "bluebird": "^3.5.0",
+    "bluebird": "^3.5.1",
     "bluebird-retry": "^0.11.0",
-    "chalk": "^2.1.0",
-    "csv-parse": "^1.2.1",
-    "fs-extra": "^4.0.1",
-    "inquirer": "^3.2.1",
-    "lodash": "^4.17.4",
-    "request": "^2.81.0",
-    "semver": "^5.4.1",
+    "chalk": "^2.3.2",
+    "csv-parse": "^2.2.0",
+    "fs-extra": "^4.0.3",
+    "inquirer": "^4.0.2",
+    "lodash": "^4.17.5",
+    "request": "^2.85.0",
+    "semver": "^5.5.0",
     "shortid": "^2.2.8",
     "text-table": "^0.2.0",
     "yargs": "^8.0.2"
